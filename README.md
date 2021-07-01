@@ -4,7 +4,7 @@
 
 
 
-### Language Version
+## Language Version
 
 **JAVA** 11.0.11
 
@@ -12,7 +12,7 @@
 
 
 
-### Information 
+## Information 
 
 #### 화면 설계
 
@@ -28,13 +28,17 @@ https://app.diagrams.net/#G1VAYe_sMlg3f5Qwm_8sXNObFvos4lJOHb
 
 
 
-### MSA 
+## MSA 
 
 apiGateway
+
+- `branch` feature_apiGateway
 
 - jwt토큰 기반 인증 및 apiGateway  서버 
 
 mainStudy
+
+- `branch` feature_mainStudy
 
 - 메인페이지(스터디리스트), 내 스터디 관리
 
