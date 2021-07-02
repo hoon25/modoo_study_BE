@@ -28,7 +28,23 @@ https://app.diagrams.net/#G1VAYe_sMlg3f5Qwm_8sXNObFvos4lJOHb
 
 
 
-## MSA 
+## Branch
+
+#### master
+
+- 실제 배포
+
+#### develop
+
+- 개발 서버
+
+#### feature_'기능 이름'
+
+- 각 기능별 브랜치
+
+
+
+## MSA
 
 apiGateway
 
