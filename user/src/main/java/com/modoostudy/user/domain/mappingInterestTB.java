@@ -4,29 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-public class chatDetailsTB {
+public class mappingInterestTB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
     @ManyToOne
-    @JoinColumn(name="speaker")
+    @JoinColumn
     private userTB userTB;
-
-    @Column
-    private String chatContents;
-
-    @Column
-    private LocalDateTime chatTime;
 
     @ManyToOne
     @JoinColumn
-    private chatTB chatTB;
-
+    private interestTB interestTB;
 }

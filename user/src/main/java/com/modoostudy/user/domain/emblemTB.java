@@ -8,22 +8,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class userTB {
+public class emblemTB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Long emblemID;
 
     @Column
-    private String nickname;
-
-    @Column
-    private String username;
-
-    @Column
-    private String GEmail;
-
-    @Column
-    private String userImage;
+    private String emblemName;
 
 }

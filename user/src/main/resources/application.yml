@@ -1,0 +1,21 @@
+spring:
+
+  datasource:
+    username: study
+    password: study1234
+    url: jdbc:mariadb://116.44.136.77:3307/studyDB
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    databaset-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+logging:
+  level:
+    me.silvernine: DEBUG

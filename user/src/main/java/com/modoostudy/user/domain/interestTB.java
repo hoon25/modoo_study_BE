@@ -8,19 +8,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class notificationTB {
-    @ManyToOne
-    @JoinColumn
-    private userTB userTB;
+public class interestTB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long interestID;
 
     @Column
-    private String notification;
-
-    @Column
-    private boolean read;
+    private String interestName;
 
 }

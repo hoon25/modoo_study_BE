@@ -8,22 +8,19 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class userTB {
+public class evaluationTB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Long ID;
 
     @Column
-    private String nickname;
+    private int score;
 
     @Column
-    private String username;
+    private String comment;
 
-    @Column
-    private String GEmail;
-
-    @Column
-    private String userImage;
-
+    @ManyToOne
+    @JoinColumn
+    private userTB userTB;
 }

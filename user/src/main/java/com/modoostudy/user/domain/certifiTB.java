@@ -8,18 +8,18 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class chatMemberTB {
+public class certifiTB {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
-    @ManyToOne
-    @JoinColumn(name="chatMember")
-    private userTB userTB;
+    @Column
+    private String certifiName;
+
+    @Column
+    private int approve;
 
     @ManyToOne
     @JoinColumn
-    private chatTB chatTB;
-
+    private userTB userTB;
 }
