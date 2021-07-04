@@ -3,6 +3,7 @@ package com.modoostudy.community.domain.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "replyTB")
 public class replyTB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
