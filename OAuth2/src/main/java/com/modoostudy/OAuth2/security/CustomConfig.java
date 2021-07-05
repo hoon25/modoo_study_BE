@@ -13,6 +13,7 @@ public class CustomConfig {
     private String jwtSigningKey = "";
 
     public String getJwtSigningKey(){
+        System.out.println(jwtSigningKey);
         return jwtSigningKey;
     }
 }
