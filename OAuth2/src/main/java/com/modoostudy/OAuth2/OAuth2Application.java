@@ -21,7 +21,7 @@ import java.util.Map;
 @EnableAuthorizationServer
 public class OAuth2Application {
 
-	@RequestMapping(value="/user")
+	@RequestMapping(value="/login")
 	public Map<String,Object> user(OAuth2Authentication user) {
 		Map<String,Object> userInfo = new HashMap<>();
 		userInfo.put("user",user.getUserAuthentication().getPrincipal());

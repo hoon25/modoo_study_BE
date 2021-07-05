@@ -16,7 +16,6 @@ import java.util.List;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableResourceServer
-
 public class MainStudyApplication {
 
 	public static void main(String[] args) {
