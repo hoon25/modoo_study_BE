@@ -3,6 +3,7 @@ package com.modoostudy.OAuth2.security;
 import com.modoostudy.OAuth2.dto.LoginUser;
 import com.modoostudy.OAuth2.model.User;
 import com.modoostudy.OAuth2.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -19,15 +20,17 @@ import java.util.Map;
 @Configuration
 public class JWTTokenEnhancer implements TokenEnhancer {
 
+    @Autowired
     private UserRepository userRepository;
 
     private LoginUser getUserId(String userName){
 
         User userInfo = userRepository.findByGEmail(userName);
+
         return LoginUser.builder()
                 .userID(userInfo.getUserID())
                 .nickname(userInfo.getNickname())
-                .GEmail(userInfo.getNickname())
+                .GEmail(userInfo.getGEmail())
                 .build();
     }
 

@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -33,8 +35,15 @@ public class UserController {
                 .res(StatusCode.OK, ResponseMessage.SIGNUPFORM_LOAD_SUCCESS, userService.getSignupForm()), HttpStatus.OK);
     }
 
-//     회원가입
-//    @PostMapping("/signupform/create")
+//     회원가입 버튼
+    @PostMapping("/signupform/signup")
+    public ResponseEntity signup(@RequestBody Map<String,Object> signupDto) {
+        userService.signup(signupDto);
+
+
+        return new ResponseEntity(DefaultRes
+                .res(StatusCode.OK, ResponseMessage.SIGNUP_SUCCESS),HttpStatus.OK);
+    }
 
 
 
