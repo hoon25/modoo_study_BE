@@ -32,9 +32,20 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client' // MariaDB
 
-	// lombok
-	compile 'org.projectlombok:lombok:1.18.20'
+
+	// dto-entity mapper, lombok
+	implementation 'org.mapstruct:mapstruct:1.4.1.Final'
+	implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+	implementation 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
 	annotationProcessor('org.projectlombok:lombok')
+
+
+
+
+
+
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

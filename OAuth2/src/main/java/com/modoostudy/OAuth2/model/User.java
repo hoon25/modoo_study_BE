@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.domain;
+package com.modoostudy.OAuth2.model;
 
 
 import lombok.Data;
@@ -31,5 +31,4 @@ public class User {
 
     @Column(length = 20, nullable = false)
     private int authorities;
-
 }

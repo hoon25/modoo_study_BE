@@ -1,6 +1,6 @@
 package com.modoostudy.OAuth2.repository;
 
-import com.modoostudy.OAuth2.domain.User;
+import com.modoostudy.OAuth2.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,14 +1,22 @@
 package com.modoostudy.OAuth2.controller;
 
 
-import com.modoostudy.OAuth2.domain.User;
+import com.modoostudy.OAuth2.dto.SignupFormDto;
+import com.modoostudy.OAuth2.model.User;
 import com.modoostudy.OAuth2.repository.UserRepository;
+import com.modoostudy.OAuth2.responseCode.DefaultRes;
+import com.modoostudy.OAuth2.responseCode.ResponseMessage;
+import com.modoostudy.OAuth2.responseCode.StatusCode;
+import com.modoostudy.OAuth2.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,14 +24,29 @@ public class UserController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/create")
+    private final UserService userService;
+
+//     회원가입 양식 컨트롤러
+    @GetMapping("/signupform")
+    public ResponseEntity signupForm() {
+        return new ResponseEntity(DefaultRes
+                .res(StatusCode.OK, ResponseMessage.SIGNUPFORM_LOAD_SUCCESS, userService.getSignupForm()), HttpStatus.OK);
+    }
+
+//     회원가입
+//    @PostMapping("/signupform/create")
+
+
+
+
+    @GetMapping("/createtest")
     public void run() {
 
         PasswordEncoder passwordEncoder;
         passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
         User user = new User();
-        user.setUserID("cchoon95");
+        user.setUserID(1L);
         user.setUserImage("hoonimage");
         user.setAuthorities(1);
         user.setGEmail("cchoon95@gmail.com");
@@ -32,16 +55,6 @@ public class UserController {
         user.setRegion("Seoul");
 
         userRepository.save(user);
-
-
-//        userRepository.save(User.builder()
-//                .userID(1)
-//                .authorities(0)
-//                .GEmail("cchoon95@naver.com")
-//                .nickname("hoon")
-//                .userImage("cchoon95image")
-//                .password(passwordEncoder.encode("hoon1234")).build());
-
         System.out.println("create User Complete");
 
     }

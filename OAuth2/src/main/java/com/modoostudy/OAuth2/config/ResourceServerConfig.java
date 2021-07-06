@@ -17,7 +17,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         // 회원 서비스의 모든 URL 에 대해 인증된 사용자만 접근하도록 제한
         http.authorizeRequests()
-                .antMatchers("/free").permitAll()
-                .anyRequest().authenticated();
+//                .antMatchers("/free").permitAll()
+                .anyRequest().permitAll();
     }
 }

@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.domain;
+package com.modoostudy.OAuth2.dto;
 
 
 import lombok.Builder;
@@ -11,6 +11,6 @@ public class LoginUser {
     private Long userID;
     private String nickname;
     private String GEmail;
-    
+
 
 }
