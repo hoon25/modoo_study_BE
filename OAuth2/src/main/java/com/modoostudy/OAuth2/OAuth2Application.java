@@ -21,11 +21,18 @@ import java.util.Map;
 @EnableAuthorizationServer
 public class OAuth2Application {
 
-	@RequestMapping(value="/login")
+	/**
+	 * 토큰 검증해주는 콜백 url "http://localhost:8095/check"
+	 * @param user
+	 * @return
+	 */
+
+	@RequestMapping(value="/check")
 	public Map<String,Object> user(OAuth2Authentication user) {
 		Map<String,Object> userInfo = new HashMap<>();
 		userInfo.put("user",user.getUserAuthentication().getPrincipal());
 		userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));
+		System.out.println(userInfo);
 		return userInfo;
 	}
 

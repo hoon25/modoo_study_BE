@@ -23,7 +23,7 @@ public class UserController {
         passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
         User user = new User();
-        user.setUserID(1);
+        user.setUserID("cchoon95");
         user.setUserImage("hoonimage");
         user.setAuthorities(1);
         user.setGEmail("cchoon95@gmail.com");
@@ -44,6 +44,18 @@ public class UserController {
 
         System.out.println("create User Complete");
 
+    }
+
+    @GetMapping("/free")
+    public String free(){
+        String free = "자유롭게 들어올 수 있습니다.";
+        return free;
+    }
+
+    @GetMapping("/authorize")
+    public String autho(){
+        String autho = "권한승인";
+        return autho;
     }
 
 

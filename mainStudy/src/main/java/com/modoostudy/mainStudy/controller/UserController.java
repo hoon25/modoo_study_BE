@@ -29,5 +29,12 @@ public class UserController {
         return userService.getAllUser();
     }
 
+    @GetMapping("/free")
+    public String free() {
+        String text = "자유롭게 들어올수 있습니다.";
+        return text;
+    }
+
+
 
 }

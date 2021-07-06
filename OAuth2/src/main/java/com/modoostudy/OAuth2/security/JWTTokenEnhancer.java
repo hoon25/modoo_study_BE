@@ -14,8 +14,9 @@ public class JWTTokenEnhancer implements TokenEnhancer {
 
 
     private String getUserId(String userName){
+        System.out.println(userName);
         // DB로 유저 아이디 조회
-        return "12345";
+        return userName;
     }
 
     @Override
