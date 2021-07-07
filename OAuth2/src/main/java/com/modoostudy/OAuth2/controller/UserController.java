@@ -24,8 +24,6 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    private final UserRepository userRepository;
-
     private final UserService userService;
 
 //     회원가입 양식 컨트롤러
@@ -45,40 +43,44 @@ public class UserController {
                 .res(StatusCode.OK, ResponseMessage.SIGNUP_SUCCESS),HttpStatus.OK);
     }
 
+////    로그인
+//    @PostMapping("/login")
+//    public String login(@RequestBody Map<String, String> loginClient) {
+//        return userService.login(loginClient);
+//    }
 
 
-
-    @GetMapping("/createtest")
-    public void run() {
-
-        PasswordEncoder passwordEncoder;
-        passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-        User user = new User();
-        user.setUserID(1L);
-        user.setUserImage("hoonimage");
-        user.setAuthorities(1);
-        user.setGEmail("cchoon95@gmail.com");
-        user.setNickname("hoon");
-        user.setPassword(passwordEncoder.encode("hoon1234"));
-        user.setRegion("Seoul");
-
-        userRepository.save(user);
-        System.out.println("create User Complete");
-
-    }
-
-    @GetMapping("/free")
-    public String free(){
-        String free = "자유롭게 들어올 수 있습니다.";
-        return free;
-    }
-
-    @GetMapping("/authorize")
-    public String autho(){
-        String autho = "권한승인";
-        return autho;
-    }
+//    @GetMapping("/createtest")
+//    public void run() {
+//
+//        PasswordEncoder passwordEncoder;
+//        passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//
+//        User user = new User();
+//        user.setUserID(1L);
+//        user.setUserImage("hoonimage");
+//        user.setAuthorities(1);
+//        user.setGEmail("cchoon95@gmail.com");
+//        user.setNickname("hoon");
+//        user.setPassword(passwordEncoder.encode("hoon1234"));
+//        user.setRegion("Seoul");
+//
+//        userRepository.save(user);
+//        System.out.println("create User Complete");
+//
+//    }
+//
+//    @GetMapping("/free")
+//    public String free(){
+//        String free = "자유롭게 들어올 수 있습니다.";
+//        return free;
+//    }
+//
+//    @GetMapping("/authorize")
+//    public String autho(){
+//        String autho = "권한승인";
+//        return autho;
+//    }
 
 
 

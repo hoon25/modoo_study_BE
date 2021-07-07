@@ -35,6 +35,12 @@ public class UserController {
         return text;
     }
 
+    @GetMapping("/authorize")
+    public String authorize() {
+        String text = "권한이 필요합니다.";
+        return text;
+    }
+
 
 
 }

@@ -1,14 +1,16 @@
 package com.modoostudy.OAuth2.model;
 
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
-@Data
+@Entity
+@Table(name="mappingUserInterestTB")
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public class MappingUserInterest {
 
     @Id
@@ -20,5 +22,13 @@ public class MappingUserInterest {
 
     @Column
     Long userID;
+
+    @Builder
+    public MappingUserInterest(Long ID, Long interestID, Long userID) {
+        this.ID = ID;
+        this.interestID = interestID;
+        this.userID = userID;
+    }
+
 
 }

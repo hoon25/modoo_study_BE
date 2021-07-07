@@ -19,5 +19,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests()
 //                .antMatchers("/free").permitAll()
                 .anyRequest().permitAll();
+//        .and()
+//        .oauth2Login().loginPage("/login");
+
     }
 }

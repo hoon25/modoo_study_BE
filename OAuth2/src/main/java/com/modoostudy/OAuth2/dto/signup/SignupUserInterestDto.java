@@ -2,10 +2,11 @@ package com.modoostudy.OAuth2.dto.signup;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-public class SignupInterestDto {
+public class SignupUserInterestDto {
     Long interestId;
     Long userId;
 }

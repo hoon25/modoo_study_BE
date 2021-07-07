@@ -31,4 +31,5 @@ public class User {
 
     @Column(length = 20, nullable = false)
     private int authorities;
+
 }
