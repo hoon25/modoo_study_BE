@@ -10,24 +10,24 @@ import lombok.Data;
 public class DefaultRes<T> {
 
     private int statusCode;
-    private String responseMessage;
+    private String message;
     private T data;
 
-    public DefaultRes(final int statusCode, final String responseMessage) {
+    public DefaultRes(final int statusCode, final String message) {
         this.statusCode = statusCode;
-        this.responseMessage = responseMessage;
+        this.message = message;
         this.data = null;
     }
 
-    public static<T> DefaultRes<T> res(final int statusCode, final String responseMessage) {
-        return res(statusCode, responseMessage, null);
+    public static<T> DefaultRes<T> res(final int statusCode, final String message) {
+        return res(statusCode, message, null);
     }
 
-    public static<T> DefaultRes<T> res(final int statusCode, final String responseMessage, final T t) {
+    public static<T> DefaultRes<T> res(final int statusCode, final String message, final T t) {
         return DefaultRes.<T>builder()
                 .data(t)
                 .statusCode(statusCode)
-                .responseMessage(responseMessage)
+                .message(message)
                 .build();
     }
 }

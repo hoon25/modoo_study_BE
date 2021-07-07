@@ -14,6 +14,8 @@ import com.modoostudy.OAuth2.repository.InterestRepository;
 import com.modoostudy.OAuth2.repository.MappingUserInterestRepository;
 import com.modoostudy.OAuth2.repository.RegionRepository;
 import com.modoostudy.OAuth2.repository.UserRepository;
+import com.modoostudy.OAuth2.responseCode.error.exception.DuplicateEmailException;
+import com.modoostudy.OAuth2.responseCode.error.exception.DuplicateNickNameException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,10 @@ public class UserService {
     public void signup(SignupDto signupDto ){
         System.out.println(signupDto);
 
+        //닉네임 이메일 검증
+        signUpValidation(signupDto.getSignupUserDto().getGEmail(), signupDto.getSignupUserDto().getNickname());
+
+
         /*
         userTB 입력
          */
@@ -78,6 +84,17 @@ public class UserService {
                             .userID(signupUserID)
                             .interestID(interest.getInterestID())
                             .build());
+        }
+    }
+
+
+    // 회원가입 유효성 검증 함수
+    public void signUpValidation(String gEmail, String nickName) {
+        if (userRepository.findByGEmail(gEmail) != null) {
+            throw new DuplicateEmailException("이메일이 중복됩니다.");
+        }
+        if (userRepository.findByNickname(nickName) != null) {
+            throw new DuplicateNickNameException("닉네임이 중복됩니다.");
         }
 
     }
