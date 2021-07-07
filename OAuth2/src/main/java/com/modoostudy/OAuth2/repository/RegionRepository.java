@@ -1,6 +1,6 @@
 package com.modoostudy.OAuth2.repository;
 
-import com.modoostudy.OAuth2.model.Region;
+import com.modoostudy.OAuth2.entity.Region;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

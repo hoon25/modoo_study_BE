@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.responseCode;
+package com.modoostudy.OAuth2.responseCode.success;
 
 public class StatusCode {
     public static final int OK = 200;

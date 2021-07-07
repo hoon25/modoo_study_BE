@@ -2,7 +2,7 @@ package com.modoostudy.OAuth2.mapper;
 
 
 import com.modoostudy.OAuth2.dto.signupForm.RegionDto;
-import com.modoostudy.OAuth2.model.Region;
+import com.modoostudy.OAuth2.entity.Region;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

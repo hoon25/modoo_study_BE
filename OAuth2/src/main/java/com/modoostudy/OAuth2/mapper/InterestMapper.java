@@ -1,7 +1,7 @@
 package com.modoostudy.OAuth2.mapper;
 
 import com.modoostudy.OAuth2.dto.signupForm.InterestDto;
-import com.modoostudy.OAuth2.model.Interest;
+import com.modoostudy.OAuth2.entity.Interest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.responseCode;
+package com.modoostudy.OAuth2.responseCode.success;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

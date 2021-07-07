@@ -2,9 +2,9 @@ package com.modoostudy.OAuth2.controller;
 
 
 import com.modoostudy.OAuth2.dto.SignupDto;
-import com.modoostudy.OAuth2.responseCode.DefaultRes;
-import com.modoostudy.OAuth2.responseCode.ResponseMessage;
-import com.modoostudy.OAuth2.responseCode.StatusCode;
+import com.modoostudy.OAuth2.responseCode.success.DefaultRes;
+import com.modoostudy.OAuth2.responseCode.success.ResponseMessage;
+import com.modoostudy.OAuth2.responseCode.success.StatusCode;
 import com.modoostudy.OAuth2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

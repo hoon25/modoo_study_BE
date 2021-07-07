@@ -1,7 +1,7 @@
 package com.modoostudy.OAuth2.security;
 
 import com.modoostudy.OAuth2.dto.LoginUser;
-import com.modoostudy.OAuth2.model.User;
+import com.modoostudy.OAuth2.entity.User;
 import com.modoostudy.OAuth2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

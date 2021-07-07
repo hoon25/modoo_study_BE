@@ -2,8 +2,8 @@ package com.modoostudy.OAuth2.service;
 
 
 
-import com.modoostudy.OAuth2.model.User;
-import com.modoostudy.OAuth2.model.UserInformation;
+import com.modoostudy.OAuth2.entity.User;
+import com.modoostudy.OAuth2.entity.UserInformation;
 import com.modoostudy.OAuth2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

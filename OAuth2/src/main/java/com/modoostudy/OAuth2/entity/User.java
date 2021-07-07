@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.model;
+package com.modoostudy.OAuth2.entity;
 
 
 import lombok.*;

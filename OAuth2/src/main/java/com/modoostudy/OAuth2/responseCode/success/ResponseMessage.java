@@ -1,4 +1,4 @@
-package com.modoostudy.OAuth2.responseCode;
+package com.modoostudy.OAuth2.responseCode.success;
 
 public class ResponseMessage {
     public static final String SIGNUPFORM_LOAD_SUCCESS = "회원가입 폼 로드 성공";

@@ -7,8 +7,8 @@ import com.modoostudy.OAuth2.dto.signup.SignupUserInterestDto;
 import com.modoostudy.OAuth2.mapper.InterestMapper;
 import com.modoostudy.OAuth2.mapper.RegionMapper;
 import com.modoostudy.OAuth2.mapper.SignupUserMapper;
-import com.modoostudy.OAuth2.model.MappingUserInterest;
-import com.modoostudy.OAuth2.model.User;
+import com.modoostudy.OAuth2.entity.MappingUserInterest;
+import com.modoostudy.OAuth2.entity.User;
 import com.modoostudy.OAuth2.repository.InterestRepository;
 
 import com.modoostudy.OAuth2.repository.MappingUserInterestRepository;
