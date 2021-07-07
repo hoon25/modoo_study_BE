@@ -13,5 +13,5 @@ public class SignupDto {
 
     private SignupUserDto signupUserDto;
     private List<SignupUserInterestDto> signupInterestDtoList;
-
 }
+

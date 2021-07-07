@@ -15,7 +15,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         // 매서드로 전달된 HttpSecurity 객체로 모든 접근 규칙 구성
 
-        // 회원 서비스의 모든 URL 에 대해 인증된 사용자만 접근하도록 제한
+
         http.authorizeRequests()
 //                .antMatchers("/free").permitAll()
                 .anyRequest().permitAll();
