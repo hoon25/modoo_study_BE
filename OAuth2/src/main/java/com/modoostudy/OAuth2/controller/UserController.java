@@ -1,7 +1,9 @@
 package com.modoostudy.OAuth2.controller;
 
 
+import com.modoostudy.OAuth2.dto.SignupDto;
 import com.modoostudy.OAuth2.dto.SignupFormDto;
+import com.modoostudy.OAuth2.dto.signup.SignupUserDto;
 import com.modoostudy.OAuth2.model.User;
 import com.modoostudy.OAuth2.repository.UserRepository;
 import com.modoostudy.OAuth2.responseCode.DefaultRes;
@@ -35,9 +37,9 @@ public class UserController {
 
 //     회원가입 버튼
     @PostMapping("/signupform/signup")
-    public ResponseEntity signup(@RequestBody Map<String,Object> signupDto) {
-        userService.signup(signupDto);
+    public ResponseEntity signup(@RequestBody SignupDto signupVo) {
 
+        userService.signup(signupVo);
 
         return new ResponseEntity(DefaultRes
                 .res(StatusCode.OK, ResponseMessage.SIGNUP_SUCCESS),HttpStatus.OK);

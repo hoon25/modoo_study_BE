@@ -8,9 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="regionTB")
-@ToString
 @Getter
-@Setter
 @NoArgsConstructor
 public class Region {
 

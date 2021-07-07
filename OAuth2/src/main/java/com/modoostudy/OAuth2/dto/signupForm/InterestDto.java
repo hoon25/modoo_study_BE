@@ -2,9 +2,8 @@ package com.modoostudy.OAuth2.dto.signupForm;
 
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
+@Builder
 public class InterestDto {
 
     private Long interestID;

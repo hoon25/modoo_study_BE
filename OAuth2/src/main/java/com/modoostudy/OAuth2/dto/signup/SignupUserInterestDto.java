@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class SignupUserInterestDto {
-    Long interestId;
-    Long userId;
+    private Long interestID;
+
 }

@@ -63,8 +63,8 @@ public class UserService {
     /** 회원가입
      *
      */
-    public void signup(Map<String, Object> signupUser){
-        System.out.println(signupUser);
+    public void signup(SignupDto signupDto ){
+        System.out.println(signupDto);
 
         /*
         userTB 입력
@@ -72,10 +72,10 @@ public class UserService {
         User signupUserEntity =  SignupUserMapper.INSTANCE.toEntity(
                 SignupUserDto.builder()
 //                .userID(Long.valueOf(String.valueOf(signupUser.get("userID"))))  // ID 자동생성 auto_increament
-                        .password(passwordEncoder.encode(String.valueOf(signupUser.get("password"))))
-                        .GEmail(String.valueOf(signupUser.get("GEmail")))
-                        .nickname(String.valueOf(signupUser.get("nickname")))
-                        .region(String.valueOf(signupUser.get("region")))
+                        .password(passwordEncoder.encode(signupDto.getSignupUserDto().getPassword()))
+                        .GEmail(signupDto.getSignupUserDto().getGEmail())
+                        .nickname(signupDto.getSignupUserDto().getNickname())
+                        .region(signupDto.getSignupUserDto().getRegion())
                         .authorities(1)
                         .build());
 
@@ -90,42 +90,21 @@ public class UserService {
         // 유저테이블 insert시 사용된 userID 호출
         Long signupUserID = signupUserEntity.getUserID();
 
-        System.out.println(signupUser.get("interest"));
-        System.out.println(signupUser.get("interest").getClass());
-        System.out.println("//////");
 
-
-
-
-//        System.out.println((signupUser.get("interest").get(0)));
-
-
-        List<Object> interestLists = Arrays.asList(signupUser.get("interest"));
-
-        System.out.println(interestLists);
-        System.out.println(interestLists.getClass().getName());
-        System.out.println(interestLists.get(0).getClass().getName());
-        System.out.println(interestLists.get(0).toString());
-
-        for(Object interest : interestLists)
+        for(SignupUserInterestDto interest : signupDto.getSignupInterestDtoList())
         {
-            System.out.println(interest);
-            System.out.println(interest.getClass().getName());
+//            System.out.println(MappingUserInterest.builder()
+//                    .userID(signupUserID)
+//                    .interestID(interest.getInterestID())
+//                    .build());
 
-//            mappingUserInterestRepository.save(SignupUserInterestMapper.INSTANCE.toEntity(
-//                            SignupUserInterestDto.builder()
-//                                    .userId(signupUserID)
-//                                    .interestId(Long.valueOf(String.valueOf(interest)))
-//                                    .build() ) );
+
             mappingUserInterestRepository.save(
                     MappingUserInterest.builder()
                             .userID(signupUserID)
-                            .interestID(Long.valueOf(String.valueOf(interest)))
+                            .interestID(interest.getInterestID())
                             .build());
         }
-
-
-//        mappingUserInterestRepository.save(MappingUserInterest.)
 
     }
 

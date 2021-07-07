@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="mappingUserInterestTB")
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
