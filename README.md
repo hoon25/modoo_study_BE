@@ -44,6 +44,16 @@ https://app.diagrams.net/#G1VAYe_sMlg3f5Qwm_8sXNObFvos4lJOHb
 
 
 
+## BuildFile
+
+`buildFile` 폴더에 Spring 빌드파일 있습니다. 
+
+#### **관련 설명**
+
+https://www.notion.so/sonigane/Backend-20613dc67dc34edfbda47890e5ba883d
+
+
+
 ## MSA
 
 apiGateway
