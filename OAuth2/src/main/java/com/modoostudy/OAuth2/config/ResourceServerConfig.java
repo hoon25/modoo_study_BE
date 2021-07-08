@@ -15,12 +15,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         // 매서드로 전달된 HttpSecurity 객체로 모든 접근 규칙 구성
 
-
         http.authorizeRequests()
-//                .antMatchers("/free").permitAll()
                 .anyRequest().permitAll();
-//        .and()
-//        .oauth2Login().loginPage("/login");
 
     }
 }
