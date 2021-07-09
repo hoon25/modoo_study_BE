@@ -1,4 +1,4 @@
-package com.modoostudy.mainStudy.dto;
+package com.modoostudy.mainStudy.dto.function;
 
 import lombok.Builder;
 import lombok.Data;
