@@ -9,10 +9,7 @@ import com.modoostudy.mainStudy.service.StudyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,6 +33,39 @@ public class StudyController {
         return new ResponseEntity(DefaultRes
         .res(StatusCode.OK, ResponseMessage.CREATED_STUDY), HttpStatus.OK);
     }
+
+//    // 스터디 리스트보기
+//    @GetMapping("")
+//    public ResponseEntity showStudyList(){
+//
+//        studyService.getStudyList();
+//
+//        return new ResponseEntity(DefaultRes
+//                .res(StatusCode.OK, ResponseMessage.READ_STUDYLIST), HttpStatus.OK);
+//    }
+
+    // 스터디 상세보기
+    @GetMapping("/study/{studyID}")
+    public ResponseEntity readStudyDetail(@PathVariable("studyID") Long studyID){
+
+        studyService.readStudyDetail(studyID);
+
+        return new ResponseEntity(DefaultRes
+                .res(StatusCode.OK, ResponseMessage.READ_STUDYDETAIL), HttpStatus.OK);
+    }
+
+
+    // 스터디 신청하기
+    @GetMapping("/study/{studyID}/apply")
+    public ResponseEntity applyStudyMember(@PathVariable("studyID") Long studyID){
+
+        studyService.applyStudyMember(studyID);
+
+
+        return new ResponseEntity(DefaultRes
+                .res(StatusCode.OK, ResponseMessage.APPLY_STUDY), HttpStatus.OK);
+    }
+
 
 
 

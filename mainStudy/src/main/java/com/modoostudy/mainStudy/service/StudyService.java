@@ -1,16 +1,15 @@
 package com.modoostudy.mainStudy.service;
 
 import com.modoostudy.mainStudy.dto.StudyDto;
+import com.modoostudy.mainStudy.dto.StudyGuestDto;
 import com.modoostudy.mainStudy.dto.StudyInterestDto;
 import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
 import com.modoostudy.mainStudy.dto.function.LoginUserDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
+import com.modoostudy.mainStudy.entity.MappingStudyGuest;
 import com.modoostudy.mainStudy.entity.Study;
 import com.modoostudy.mainStudy.entity.User;
-import com.modoostudy.mainStudy.mapper.InterestMapper;
-import com.modoostudy.mainStudy.mapper.RegionMapper;
-import com.modoostudy.mainStudy.mapper.StudyInterestMapper;
-import com.modoostudy.mainStudy.mapper.StudyMapper;
+import com.modoostudy.mainStudy.mapper.*;
 import com.modoostudy.mainStudy.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -26,6 +25,7 @@ public class StudyService {
     private final RegionRepository regionRepository;
     private final StudyRepository studyRepository;
     private final MappingStudyInterestRepository mappingStudyInterestRepository;
+    private final MappingStudyGuestRepository mappingStudyGuestRepository;
 
 
     /**
@@ -59,8 +59,6 @@ public class StudyService {
     /**
      * 스터디 생성하기
      */
-
-
     public void createStudy(CreateStudyDto createStudyDto) {
 
         System.out.println(createStudyDto);
@@ -100,6 +98,35 @@ public class StudyService {
 
         }
     }
+
+    /**
+     * 메인페이지 스터디 리스트 받아오기
+     */
+
+    /**
+     * 스터디페이지 상세보기
+     */
+    public void readStudyDetail(Long studyID){
+        
+    }
+
+    /**
+     * 스터디 신청하기
+     */
+
+    public void applyStudyMember(Long studyID){
+        MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
+                StudyGuestDto.builder()
+                .guestID(getUserFromJWT().getUserID())
+                .studyID(studyID)
+                .status("대기")
+                .build());
+
+        mappingStudyGuestRepository.save(mappingStudyGuest);
+    }
+
+
+
 
 
 }
