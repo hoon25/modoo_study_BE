@@ -1,7 +1,7 @@
 package com.modoostudy.mainStudy.controller;
 
 
-import com.modoostudy.mainStudy.model.User;
+import com.modoostudy.mainStudy.entity.User;
 import com.modoostudy.mainStudy.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

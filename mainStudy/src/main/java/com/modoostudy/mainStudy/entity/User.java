@@ -1,4 +1,4 @@
-package com.modoostudy.mainStudy.model;
+package com.modoostudy.mainStudy.entity;
 
 import lombok.Data;
 

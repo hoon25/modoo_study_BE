@@ -1,6 +1,6 @@
 package com.modoostudy.mainStudy.service;
 
-import com.modoostudy.mainStudy.model.User;
+import com.modoostudy.mainStudy.entity.User;
 import com.modoostudy.mainStudy.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

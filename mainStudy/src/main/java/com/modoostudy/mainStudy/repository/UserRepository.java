@@ -1,6 +1,6 @@
 package com.modoostudy.mainStudy.repository;
 
-import com.modoostudy.mainStudy.model.User;
+import com.modoostudy.mainStudy.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
