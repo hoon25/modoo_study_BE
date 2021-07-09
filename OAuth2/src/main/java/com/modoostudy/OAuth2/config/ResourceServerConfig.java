@@ -16,6 +16,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         // 매서드로 전달된 HttpSecurity 객체로 모든 접근 규칙 구성
 
         http.authorizeRequests()
+                .antMatchers("/author").authenticated()
                 .anyRequest().permitAll();
 
     }

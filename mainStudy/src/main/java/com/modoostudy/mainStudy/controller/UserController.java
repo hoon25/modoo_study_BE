@@ -38,6 +38,11 @@ public class UserController {
     @GetMapping("/authorize")
     public String authorize() {
         String text = "권한이 필요합니다.";
+
+        userService.getUserID();
+
+
+
         return text;
     }
 

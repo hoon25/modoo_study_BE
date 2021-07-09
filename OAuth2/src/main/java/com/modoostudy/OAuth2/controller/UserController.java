@@ -39,5 +39,10 @@ public class UserController {
                 .res(StatusCode.OK, ResponseMessage.CREATED_USER),HttpStatus.OK);
     }
 
+    @GetMapping("/author")
+    public String author(){
+        return "권한승인이 정상적으로 이루어집니다.";
+    }
+
 
 }

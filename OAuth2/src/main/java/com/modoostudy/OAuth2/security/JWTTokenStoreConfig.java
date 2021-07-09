@@ -1,6 +1,8 @@
 package com.modoostudy.OAuth2.security;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -13,11 +15,20 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class JWTTokenStoreConfig {
 
-    private final CustomConfig customConfig;
+//    private final CustomConfig customConfig;
+//
+//    public JWTTokenStoreConfig(CustomConfig customConfig) {
+//        this.customConfig = customConfig;
+//    }
 
-    public JWTTokenStoreConfig(CustomConfig customConfig) {
-        this.customConfig = customConfig;
+    private ResourceServerProperties resourceServerProperties;
+
+    public JWTTokenStoreConfig(ResourceServerProperties resourceServerProperties) {
+        this.resourceServerProperties = resourceServerProperties;
     }
+
+
+
 
     @Bean
     public TokenStore tokenStore() {
@@ -45,7 +56,8 @@ public class JWTTokenStoreConfig {
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(customConfig.getJwtSigningKey());      // 토큰 서명에 사용되는 서명키 정의
+//        converter.setSigningKey(customConfig.getJwtSigningKey());      // 토큰 서명에 사용되는 서명키 정의
+        converter.setSigningKey(resourceServerProperties.getJwt().getKeyValue());
         return converter;
     }
 
