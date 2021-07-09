@@ -6,10 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 
 
-//@Entity
-//@Table(name="userTB")
-//@Data
-
 @Entity
 @Table(name="userTB")
 @Getter

@@ -1,33 +1,14 @@
 package com.modoostudy.mainStudy.controller;
 
 
-import com.modoostudy.mainStudy.entity.User;
-import com.modoostudy.mainStudy.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-
+@RequiredArgsConstructor
 @RestController
 public class UserController {
 
-
-    private final UserService userService;
-
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-
-    @GetMapping("/")
-    public List<User> getUser() {
-        System.out.println(userService.getAllUser());
-        System.out.println();
-
-        return userService.getAllUser();
-    }
 
     @GetMapping("/free")
     public String free() {
@@ -38,11 +19,6 @@ public class UserController {
     @GetMapping("/authorize")
     public String authorize() {
         String text = "권한이 필요합니다.";
-
-        userService.getUserID();
-
-
-
         return text;
     }
 
