@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 @Builder
-public class LoginUser {
-    String GEmail;
-    String password;
+public class RegionDto {
+    private String regionName;
 }

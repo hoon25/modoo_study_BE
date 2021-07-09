@@ -1,13 +1,11 @@
 package com.modoostudy.mainStudy.repository;
 
-import com.modoostudy.mainStudy.entity.User;
+import com.modoostudy.mainStudy.entity.Study;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-
-    User findByGEmail(String GEmail);
+public interface StudyRepository extends JpaRepository<Study, Long> {
 
 
 }

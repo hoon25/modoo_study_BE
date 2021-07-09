@@ -14,20 +14,18 @@ public class MappingUserInterest {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long ID;
+    Long muiID;
 
-    @Column
+    @Column(nullable = false)
     Long interestID;
 
-    @Column
+    @Column(nullable = false)
     Long userID;
 
     @Builder
-    public MappingUserInterest(Long ID, Long interestID, Long userID) {
-        this.ID = ID;
+    public MappingUserInterest(Long muiID, Long interestID, Long userID) {
+        this.muiID = muiID;
         this.interestID = interestID;
         this.userID = userID;
     }
-
-
 }
