@@ -1,6 +1,6 @@
 package com.modoostudy.mainStudy.responseCode.error.exception;
 
-import com.modoostudy.OAuth2.responseCode.error.ErrorCode;
+import com.modoostudy.mainStudy.responseCode.error.ErrorCode;
 
 public class DuplicateNickNameException extends BusinessException {
 

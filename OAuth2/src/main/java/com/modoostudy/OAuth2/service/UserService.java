@@ -68,14 +68,12 @@ public class UserService {
 
         userRepository.save(signupUserEntity);
 
-        System.out.println(signupUserEntity.getUserID());
-
 
         /*
         mappingUserInterestTB 입력
          */
         Long signupUserID = signupUserEntity.getUserID(); // 유저테이블 insert시 사용된 userID 호출
-
+        System.out.println(signupUserID);
 
         for(SignupUserInterestDto interest : signupDto.getSignupInterestDtoList())
         {

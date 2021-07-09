@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface MappingUserInterestRepository extends JpaRepository<MappingUserInterest, Long> {
 
 
+
+
 }

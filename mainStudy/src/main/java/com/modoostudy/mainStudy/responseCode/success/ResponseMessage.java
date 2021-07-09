@@ -1,7 +1,9 @@
 package com.modoostudy.mainStudy.responseCode.success;
 
 public class ResponseMessage {
-    public static final String SIGNUPFORM_LOAD_SUCCESS = "회원가입 폼 로드 성공";
+    public static final String STUDYFORM_LOAD_SUCCESS = "스터디생성 폼 로드 성공";
+    public static final String CREATED_STUDY = "스터디 생성 성공";
+
     public static final String LOGIN_SUCCESS = "로그인 성공";
     public static final String LOGIN_FAIL = "로그인 실패";
 //    public static final String READ_USER = "회원 정보 조회 성공";

@@ -3,6 +3,7 @@ package com.modoostudy.mainStudy.dto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -24,6 +25,7 @@ public class StudyDto {
     private String details;
 
     @Getter
+    @NoArgsConstructor
     public static class RegistStudy {
         private String title;
         @DateTimeFormat(pattern = "yyyy-MM-dd")

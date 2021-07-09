@@ -23,6 +23,9 @@ public class Study{
     private Long hostID;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private LocalDate periodStart;
 
     @Column(nullable = false)
@@ -35,15 +38,17 @@ public class Study{
     private String need;
 
     @Column(nullable = false)
-    private String onoffline;
+    private Long onoffline;
 
     @Column(nullable = false)
     private String details;
 
     @Builder
-    public Study(Long studyID, Long hostID, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, String details) {
+
+    public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, Long onoffline, String details) {
         this.studyID = studyID;
         this.hostID = hostID;
+        this.title = title;
         this.periodStart = periodStart;
         this.periodEnd = periodEnd;
         this.goal = goal;

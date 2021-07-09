@@ -1,18 +1,20 @@
 package com.modoostudy.mainStudy.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 @Data
 @Builder
 public class StudyInterestDto {
 
+    Long msiID;
     Long interestID;
+    Long studyID;
 
     @Getter
-    public class registStudyInterest{
+    @AllArgsConstructor
+    public static class registStudyInterest{
         private Long interestID;
+
     }
 
 }
