@@ -21,7 +21,7 @@ public class StudyDto {
     private LocalDate periodEnd;
     private String goal;
     private String need;
-    private Long onoffline;
+    private String onoffline;
     private String details;
 
     @Getter
@@ -34,7 +34,7 @@ public class StudyDto {
         private LocalDate periodEnd;
         private String goal;
         private String need;
-        private Long onoffline;
+        private String onoffline;
         private String details;
     }
 
@@ -48,7 +48,7 @@ public class StudyDto {
         private LocalDate periodEnd;
         private String goal;
         private String need;
-        private Long onoffline;
+        private String onoffline;
         private String details;
     }
 

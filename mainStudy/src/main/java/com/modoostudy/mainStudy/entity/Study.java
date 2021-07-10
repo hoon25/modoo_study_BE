@@ -40,17 +40,20 @@ public class Study{
     private String need;
 
     @Column(nullable = false)
-    private Long onoffline;
+    private String onoffline;
 
     @Column(nullable = false)
     private String details;
+
+    @Column(nullable = false)
+    private Long needPeople
 
     @OneToMany(mappedBy = "study")
     private List<MappingStudyInterest> studyInterests = new ArrayList<>();
 
 
     @Builder
-    public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, Long onoffline, String details) {
+    public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, String details) {
         this.studyID = studyID;
         this.hostID = hostID;
         this.title = title;

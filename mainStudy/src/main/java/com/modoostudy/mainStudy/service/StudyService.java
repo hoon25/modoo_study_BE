@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -89,15 +90,20 @@ public class StudyService {
         mappingStudyInterestTB 입력
          */
         Long registStudyID = createStudyEntity.getStudyID();
+        List<StudyInterestDto.registStudyInterest> studyInterests = createStudyDto.getRegistStudyInterestList();
+        System.out.println(studyInterests.get(0).getInterestID());
+        System.out.println(studyInterests.get(1).getInterestID());
 
-        for (StudyInterestDto.registStudyInterest interest : createStudyDto.getRegistStudyInterestList())
-        {
+
+        for (StudyInterestDto.registStudyInterest studyInterest : studyInterests) {
+            Interest interest = new Interest();
+            interest.setInterestID(studyInterest.getInterestID());
+
             mappingStudyInterestRepository.save(
-                    StudyInterestMapper.INSTANCE.toEntity(
-                            StudyInterestDto.builder()
-                                    .studyID(registStudyID)
-                                    .interestID(interest.getInterestID())
-                                    .build()));
+                    MappingStudyInterest.builder()
+                    .study(createStudyEntity)
+                    .interest(interest)
+                    .build());
 
         }
     }
@@ -109,20 +115,14 @@ public class StudyService {
     /**
      * 스터디페이지 상세보기
      */
-    public void readStudyDetail(Long studyID){
+    public void readStudyDetail(Long studyID) {
 
         System.out.println(studyRepository.findByStudyID(studyID));
         System.out.println(studyRepository.findByStudyID(studyID).getStudyID());
         System.out.println(studyRepository.findByStudyID(studyID).getStudyInterests());
-        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()){
+        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()) {
             System.out.println(mappingStudyInterestList.getInterest().getInterestName());
         }
-
-
-
-
-
-
 
 
     }
@@ -130,17 +130,16 @@ public class StudyService {
     /**
      * 스터디 신청하기
      */
-    public void applyStudyMember(Long studyID){
+    public void applyStudyMember(Long studyID) {
         MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
                 StudyGuestDto.builder()
-                .guestID(getUserFromJWT().getUserID())
-                .studyID(studyID)
-                .status("대기")
-                .build());
+                        .guestID(getUserFromJWT().getUserID())
+                        .studyID(studyID)
+                        .status("대기")
+                        .build());
 
         mappingStudyGuestRepository.save(mappingStudyGuest);
     }
-
 
 
     /**
@@ -156,11 +155,10 @@ public class StudyService {
         createStudyEntity.setGoal("목표");
         createStudyEntity.setHostID(1000L);
         createStudyEntity.setNeed("원하는거");
-        createStudyEntity.setOnoffline(2L);
+        createStudyEntity.setOnoffline("온라인");
         createStudyEntity.setPeriodStart(LocalDate.now());
         createStudyEntity.setPeriodEnd(LocalDate.now());
         createStudyEntity.setTitle("제목2");
-        createStudyEntity.setHostID(1L);
 
 
         // 가상의 studyInterest 2개
@@ -193,9 +191,6 @@ public class StudyService {
         mappingStudyInterestRepository.save(mappingStudyInterest1);
         mappingStudyInterestRepository.save(mappingStudyInterest2);
     }
-
-
-
 
 
 }

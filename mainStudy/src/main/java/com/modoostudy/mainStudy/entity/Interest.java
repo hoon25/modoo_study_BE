@@ -26,8 +26,8 @@ public class Interest {
     private String interestClassification;
 
     // 이곳이 PK로 쓰이진 않으므로 MappingStudyInterest와 interest는 단방향 참조
-//    @OneToMany(mappedBy = "interest")
-//    private List<MappingStudyInterest> interestNames = new ArrayList<>();
+////    @OneToMany(mappedBy = "interest")
+////    private List<MappingStudyInterest> interestNames = new ArrayList<>();
 
 
 

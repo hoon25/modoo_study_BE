@@ -1,5 +1,6 @@
 package com.modoostudy.mainStudy.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,10 +33,9 @@ public class MappingStudyInterest {
     private Study study;
 
 
-//    @Builder
-//    public MappingStudyInterest(Long msiID, Long interestID, Long studyID) {
-//        this.msiID = msiID;
-//        this.interestID = interestID;
-//        this.studyID = studyID;
-//    }
+    @Builder
+    public MappingStudyInterest(Interest interest, Study study) {
+        this.interest = interest;
+        this.study = study;
+    }
 }
