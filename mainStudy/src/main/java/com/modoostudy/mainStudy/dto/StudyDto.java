@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,6 +23,7 @@ public class StudyDto {
     private String goal;
     private String need;
     private String onoffline;
+    private Long needPeople;
     private String details;
 
     @Getter
@@ -35,6 +37,7 @@ public class StudyDto {
         private String goal;
         private String need;
         private String onoffline;
+        private Long needPeople;
         private String details;
     }
 
@@ -49,7 +52,10 @@ public class StudyDto {
         private String goal;
         private String need;
         private String onoffline;
+        private Long approvePeople;
+        private Long needPeople;
         private String details;
+        private List<String> interestName;
     }
 
 

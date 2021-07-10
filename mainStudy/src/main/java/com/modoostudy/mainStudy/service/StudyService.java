@@ -80,6 +80,7 @@ public class StudyService {
                         .goal(createStudyDto.getRegistStudy().getGoal())
                         .need(createStudyDto.getRegistStudy().getNeed())
                         .onoffline(createStudyDto.getRegistStudy().getOnoffline())
+                        .needPeople(createStudyDto.getRegistStudy().getNeedPeople())
                         .details(createStudyDto.getRegistStudy().getDetails())
                         .build());
 
@@ -117,12 +118,20 @@ public class StudyService {
      */
     public void readStudyDetail(Long studyID) {
 
-        System.out.println(studyRepository.findByStudyID(studyID));
-        System.out.println(studyRepository.findByStudyID(studyID).getStudyID());
-        System.out.println(studyRepository.findByStudyID(studyID).getStudyInterests());
-        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()) {
-            System.out.println(mappingStudyInterestList.getInterest().getInterestName());
-        }
+        Study study =  studyRepository.findByStudyID(studyID);
+        System.out.println(study);
+
+
+
+
+
+
+//        System.out.println(studyRepository.findByStudyID(studyID));
+//        System.out.println(studyRepository.findByStudyID(studyID).getStudyID());
+//        System.out.println(studyRepository.findByStudyID(studyID).getStudyInterests());
+//        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()) {
+//            System.out.println(mappingStudyInterestList.getInterest().getInterestName());
+//        }
 
 
     }
