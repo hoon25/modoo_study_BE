@@ -7,6 +7,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface InterestMapper extends GenericMapper<InterestDto, Interest> {
-    InterestMapper INSTANCE = Mappers.getMapper(InterestMapper.class);
+    InterestMapper INSTANCE = Mappers.getMapper(InterestMapper.class );
 
 }

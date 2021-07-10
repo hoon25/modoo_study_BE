@@ -7,6 +7,7 @@ import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
 import com.modoostudy.mainStudy.dto.function.LoginUserDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
 import com.modoostudy.mainStudy.entity.MappingStudyGuest;
+import com.modoostudy.mainStudy.entity.MappingStudyInterest;
 import com.modoostudy.mainStudy.entity.Study;
 import com.modoostudy.mainStudy.entity.User;
 import com.modoostudy.mainStudy.mapper.*;
@@ -26,6 +27,9 @@ public class StudyService {
     private final StudyRepository studyRepository;
     private final MappingStudyInterestRepository mappingStudyInterestRepository;
     private final MappingStudyGuestRepository mappingStudyGuestRepository;
+
+//    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("name");
+//    private final EntityManager em = emf.createEntityManager();
 
 
     /**
@@ -107,13 +111,26 @@ public class StudyService {
      * 스터디페이지 상세보기
      */
     public void readStudyDetail(Long studyID){
-        
+
+        System.out.println(studyRepository.findByStudyID(studyID));
+        System.out.println(studyRepository.findByStudyID(studyID).getStudyID());
+        System.out.println(studyRepository.findByStudyID(studyID).getStudyInterests());
+        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()){
+            System.out.println(mappingStudyInterestList.getInterest().getInterestName());
+        }
+
+
+
+
+
+
+
+
     }
 
     /**
      * 스터디 신청하기
      */
-
     public void applyStudyMember(Long studyID){
         MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
                 StudyGuestDto.builder()

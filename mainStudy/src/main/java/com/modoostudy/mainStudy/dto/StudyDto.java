@@ -38,6 +38,22 @@ public class StudyDto {
         private String details;
     }
 
+    @Data
+    @Builder
+    public static class ReadStudyDetail {
+        private String title;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private LocalDate periodStart;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private LocalDate periodEnd;
+        private String goal;
+        private String need;
+        private Long onoffline;
+        private String details;
+    }
+
+
+
 
 
 

@@ -1,6 +1,5 @@
 package com.modoostudy.mainStudy.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,18 +15,27 @@ public class MappingStudyInterest {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long msiID;
+    private Long msiID;
 
-    @Column(nullable = false)
-    Long interestID;
+//    @Column(nullable = false)
+//    private Long interestID;
 
-    @Column(nullable = false)
-    Long studyID;
+//    @Column(nullable = false)
+//    private Long studyID;
 
-    @Builder
-    public MappingStudyInterest(Long msiID, Long interestID, Long studyID) {
-        this.msiID = msiID;
-        this.interestID = interestID;
-        this.studyID = studyID;
-    }
+    @ManyToOne
+    @JoinColumn(name="interestID")
+    private Interest interest;
+
+    @ManyToOne
+    @JoinColumn(name="studyID")
+    private Study study;
+
+
+//    @Builder
+//    public MappingStudyInterest(Long msiID, Long interestID, Long studyID) {
+//        this.msiID = msiID;
+//        this.interestID = interestID;
+//        this.studyID = studyID;
+//    }
 }

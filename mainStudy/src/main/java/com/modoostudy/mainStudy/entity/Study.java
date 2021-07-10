@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="studyTB")
@@ -43,8 +45,11 @@ public class Study{
     @Column(nullable = false)
     private String details;
 
-    @Builder
+    @OneToMany(mappedBy = "study")
+    private List<MappingStudyInterest> studyInterests = new ArrayList<>();
 
+
+    @Builder
     public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, Long onoffline, String details) {
         this.studyID = studyID;
         this.hostID = hostID;

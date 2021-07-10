@@ -3,10 +3,9 @@ package com.modoostudy.mainStudy.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="interestTB")
@@ -22,6 +21,10 @@ public class Interest {
 
     @Column(nullable = false)
     private String interestClassification;
+
+    @OneToMany(mappedBy = "interest")
+    private List<MappingStudyInterest> interestNames = new ArrayList<>();
+
 
 
 }
