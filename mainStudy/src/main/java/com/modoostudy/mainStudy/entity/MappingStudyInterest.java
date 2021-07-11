@@ -34,7 +34,8 @@ public class MappingStudyInterest {
 
 
     @Builder
-    public MappingStudyInterest(Interest interest, Study study) {
+    public MappingStudyInterest(Long msiID, Interest interest, Study study) {
+        this.msiID = msiID;
         this.interest = interest;
         this.study = study;
     }

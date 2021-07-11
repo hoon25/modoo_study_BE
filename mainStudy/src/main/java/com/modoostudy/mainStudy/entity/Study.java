@@ -1,6 +1,5 @@
 package com.modoostudy.mainStudy.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -53,26 +52,9 @@ public class Study{
 
 
     @OneToMany(mappedBy = "study")
-    private List<MappingStudyInterest> studyInterests = new ArrayList<>();
+    private List<MappingStudyInterest> studyInterests = new ArrayList<MappingStudyInterest>();
 
     @OneToMany(mappedBy = "study")
-    private List<MappingStudyGuest> studyGuests = new ArrayList<>();
-
-
-    @Builder
-
-    public Study(Long studyID, User user, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details, List<MappingStudyInterest> studyInterests, List<MappingStudyGuest> studyGuests) {
-        this.studyID = studyID;
-        this.user = user;
-        this.title = title;
-        this.periodStart = periodStart;
-        this.periodEnd = periodEnd;
-        this.goal = goal;
-        this.need = need;
-        this.onoffline = onoffline;
-        this.needPeople = needPeople;
-        this.details = details;
-        this.studyInterests = studyInterests;
-        this.studyGuests = studyGuests;
+    private List<MappingStudyGuest> studyGuests = new ArrayList<MappingStudyGuest>();
     }
-}
+

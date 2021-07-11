@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel="spring")
 public interface StudyMapper extends GenericMapper<StudyDto, Study> {
 
-    StudyMapper INSTANCE = Mappers.getMapper(StudyMapper.class );
+    StudyMapper INSTANCE = Mappers.getMapper(StudyMapper.class);
 
 
 }

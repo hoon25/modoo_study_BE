@@ -78,7 +78,6 @@ public class StudyDto {
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         private LocalDate periodEnd;
         private String onoffline;
-        private Long approvePeople;
         private Long needPeople;
         private List<String> interestName;
     }
