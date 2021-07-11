@@ -68,6 +68,23 @@ public class StudyDto {
         private String status;
     }
 
+    @Data
+    @Builder
+    public static class ReadStudyList {
+        private String title;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private LocalDate periodStart;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private LocalDate periodEnd;
+        private String goal;
+        private String need;
+        private String onoffline;
+        private Long approvePeople;
+        private Long needPeople;
+        private String details;
+        private List<String> interestName;
+    }
+
 
 
 

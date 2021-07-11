@@ -3,6 +3,7 @@ package com.modoostudy.mainStudy.controller;
 
 import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
 import com.modoostudy.mainStudy.dto.function.ReadStudyDetailDto;
+import com.modoostudy.mainStudy.dto.function.ReadStudyListDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
 import com.modoostudy.mainStudy.responseCode.success.DefaultRes;
 import com.modoostudy.mainStudy.responseCode.success.ResponseMessage;
@@ -39,15 +40,15 @@ public class StudyController {
         .res(StatusCode.OK, ResponseMessage.CREATED_STUDY), HttpStatus.OK);
     }
 
-//    // 스터디 리스트보기
-//    @GetMapping("")
-//    public ResponseEntity showStudyList(){
-//
-//        studyService.getStudyList();
-//
-//        return new ResponseEntity(DefaultRes
-//                .res(StatusCode.OK, ResponseMessage.READ_STUDYLIST), HttpStatus.OK);
-//    }
+    // 스터디 리스트보기
+    @GetMapping("")
+    public ResponseEntity readStudyList(){
+
+        ReadStudyListDto readStudyList = studyService.getStudyList();
+
+        return new ResponseEntity(DefaultRes
+                .res(StatusCode.OK, ResponseMessage.READ_STUDYLIST, readStudyList), HttpStatus.OK);
+    }
 
     // 스터디 상세보기
     @GetMapping("/study/{studyID}")

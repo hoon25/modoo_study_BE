@@ -3,10 +3,7 @@ package com.modoostudy.mainStudy.service;
 import com.modoostudy.mainStudy.dto.StudyDto;
 import com.modoostudy.mainStudy.dto.StudyGuestDto;
 import com.modoostudy.mainStudy.dto.StudyInterestDto;
-import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
-import com.modoostudy.mainStudy.dto.function.LoginUserDto;
-import com.modoostudy.mainStudy.dto.function.ReadStudyDetailDto;
-import com.modoostudy.mainStudy.dto.function.StudyFormDto;
+import com.modoostudy.mainStudy.dto.function.*;
 import com.modoostudy.mainStudy.entity.*;
 import com.modoostudy.mainStudy.mapper.InterestMapper;
 import com.modoostudy.mainStudy.mapper.RegionMapper;
@@ -44,6 +41,8 @@ public class StudyService {
      */
     public LoginUserDto getUserFromJWT() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+
         User user = userRepository.findByGEmail(authentication.getName());
 
         return LoginUserDto.builder()
@@ -51,6 +50,8 @@ public class StudyService {
                 .GEmail(user.getGEmail())
                 .nickName(user.getNickname())
                 .build();
+
+
     }
 
 
@@ -129,6 +130,38 @@ public class StudyService {
     /**
      * 메인페이지 스터디 리스트 받아오기
      */
+    public ReadStudyListDto getStudyList() {
+
+        /*
+        비로그인 시
+         */
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication.getPrincipal().toString().contentEquals("anonymousUser"))
+        {
+            System.out.println("비회원입니다.");
+            return ReadStudyListDto.builder()
+//                .readStudyList()
+                    .build();
+        }
+
+
+        /*
+        로그인 시
+         */
+
+
+        else {
+
+            return ReadStudyListDto.builder()
+                    .loginUserDto(getUserFromJWT())
+//                .readStudyList()
+                    .build();
+        }
+
+
+    }
+
 
     /**
      * 스터디페이지 상세보기
@@ -159,7 +192,7 @@ public class StudyService {
         List<StudyDto.ReadStudyDetailMember> readStudyDetailMembers = new ArrayList<>();
 
         for (MappingStudyGuest mappingStudyGuest : mappingStudyGuestList) {
-            if(mappingStudyGuest.getStatus().contentEquals("승인") || mappingStudyGuest.getStatus().contentEquals("대기")){
+            if (mappingStudyGuest.getStatus().contentEquals("승인") || mappingStudyGuest.getStatus().contentEquals("대기")) {
                 readStudyDetailMembers.add(StudyDto.ReadStudyDetailMember.builder()
                         .nickname(mappingStudyGuest.getUser().getNickname())
                         .status(mappingStudyGuest.getStatus())
@@ -170,6 +203,7 @@ public class StudyService {
 
 
         return ReadStudyDetailDto.builder()
+                .loginUserDto(getUserFromJWT())
                 .readStudyDetail(StudyDto.ReadStudyDetail.builder()
                         .title(study.getTitle())
                         .hostNickName(study.getUser().getNickname())
@@ -198,10 +232,10 @@ public class StudyService {
          */
         MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
                 StudyGuestDto.builder()
-                .user(userRepository.findByUserID(getUserFromJWT().getUserID()))
-                .study(studyRepository.findByStudyID(studyID))
-                .status("대기")
-                .build());
+                        .user(userRepository.findByUserID(getUserFromJWT().getUserID()))
+                        .study(studyRepository.findByStudyID(studyID))
+                        .status("대기")
+                        .build());
         mappingStudyGuestRepository.save(mappingStudyGuest);
     }
 

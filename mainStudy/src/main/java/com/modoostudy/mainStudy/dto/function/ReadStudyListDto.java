@@ -5,13 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Builder
-public class ReadStudyDetailDto {
+public class ReadStudyListDto {
+
 
     private LoginUserDto loginUserDto;
-    private StudyDto.ReadStudyDetail readStudyDetail;
-    private List<StudyDto.ReadStudyDetailMember> readStudyDetailMembers;
+    private List<StudyDto.ReadStudyList> readStudyListDto;
+
+
+
+
+
 
 }
