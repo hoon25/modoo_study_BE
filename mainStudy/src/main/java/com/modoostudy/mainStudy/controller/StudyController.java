@@ -2,6 +2,7 @@ package com.modoostudy.mainStudy.controller;
 
 
 import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
+import com.modoostudy.mainStudy.dto.function.ReadStudyDetailDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
 import com.modoostudy.mainStudy.responseCode.success.DefaultRes;
 import com.modoostudy.mainStudy.responseCode.success.ResponseMessage;
@@ -52,10 +53,10 @@ public class StudyController {
     @GetMapping("/study/{studyID}")
     public ResponseEntity readStudyDetail(@PathVariable("studyID") Long studyID){
 
-        studyService.readStudyDetail(studyID);
+        ReadStudyDetailDto readStudyDetail = studyService.readStudyDetail(studyID);
 
         return new ResponseEntity(DefaultRes
-                .res(StatusCode.OK, ResponseMessage.READ_STUDYDETAIL), HttpStatus.OK);
+                .res(StatusCode.OK, ResponseMessage.READ_STUDYDETAIL,readStudyDetail), HttpStatus.OK);
     }
 
 

@@ -52,8 +52,8 @@ public class Study{
     @OneToMany(mappedBy = "study")
     private List<MappingStudyInterest> studyInterests = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "study")
-//    private List<MappingStudyGuest> studyGuests = new ArrayList<>();
+    @OneToMany(mappedBy = "study")
+    private List<MappingStudyGuest> studyGuests = new ArrayList<>();
 
 
     @Builder

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -38,6 +38,9 @@ public class User {
 
     @Column(length = 20, nullable = false)
     private int authorities;
+
+    @OneToMany(mappedBy = "user")
+    List<MappingStudyGuest> studyGuests;
 
     @Builder
     public User(Long userID, String password, String nickname, String region, String GEmail, String userImage, int authorities) {

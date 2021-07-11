@@ -18,17 +18,23 @@ public class MappingStudyGuest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long msgID;
 
-    @Column(nullable = false)
-    private Long guestID;
+//    @Column(nullable = false)
+//    private Long guestID;
 
-    @Column(nullable = false)
-    private Long studyID;
+//    @Column(nullable = false)
+//    private Long studyID;
 
     @Column(nullable = false)
     private String status;
 
-//    @ManyToOne
-//    @JoinColumn(name="guestID")
-//    private Study study;
+    @ManyToOne
+    @JoinColumn(name="studyID")
+    private Study study;
+
+    @ManyToOne
+    @JoinColumn(name="userID")
+    private User user;
+
+
 
 }

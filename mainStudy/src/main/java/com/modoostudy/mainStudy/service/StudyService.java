@@ -5,6 +5,7 @@ import com.modoostudy.mainStudy.dto.StudyGuestDto;
 import com.modoostudy.mainStudy.dto.StudyInterestDto;
 import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
 import com.modoostudy.mainStudy.dto.function.LoginUserDto;
+import com.modoostudy.mainStudy.dto.function.ReadStudyDetailDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
 import com.modoostudy.mainStudy.entity.*;
 import com.modoostudy.mainStudy.mapper.InterestMapper;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -108,9 +109,9 @@ public class StudyService {
 
             mappingStudyInterestRepository.save(
                     MappingStudyInterest.builder()
-                    .study(createStudyEntity)
-                    .interest(interest)
-                    .build());
+                            .study(createStudyEntity)
+                            .interest(interest)
+                            .build());
 
         }
     }
@@ -122,75 +123,56 @@ public class StudyService {
     /**
      * 스터디페이지 상세보기
      */
-    public void readStudyDetail(Long studyID) {
+    public ReadStudyDetailDto readStudyDetail(Long studyID) {
 
-        Study study =  studyRepository.findByStudyID(studyID);
+        Study study = studyRepository.findByStudyID(studyID);
 
-
-        // List interestName
-        List<String> interestNameList = new ArrayList<>();
-        Stream<MappingStudyInterest> stream = study.getStudyInterests().stream();
-        stream.forEach(c-> interestNameList.add(c.getInterest().getInterestName()));
+        // 스터디 InterestName List
+        List<String> interestNameList = study.getStudyInterests().stream()
+                .map(mappingStudyInterest -> mappingStudyInterest.getInterest())
+                .map(Interest::getInterestName)
+                .collect(Collectors.toList());
 
         System.out.println(interestNameList.get(0));
         System.out.println(interestNameList.get(1));
 
-        // approvePeopleCount
+        // 스터디 승인받은 사람 수
+        Long approvePeople = study.getStudyGuests().stream()
+                .map(MappingStudyGuest::getStatus)
+                .filter(s -> s.contentEquals("승인"))
+                .count();
 
 
-        // studyGuestInfo
+        // 스터디 멤버 현황 (승인/대기 받은사람 정보)
+        List<MappingStudyGuest> mappingStudyGuestList = mappingStudyGuestRepository.findByStatusOrStatusAndStudy("승인","대기", study);
+
+        List<StudyDto.ReadStudyDetailMember> readStudyDetailMembers = new ArrayList<>();
+
+        for (MappingStudyGuest mappingStudyGuest : mappingStudyGuestList) {
+            readStudyDetailMembers.add(StudyDto.ReadStudyDetailMember.builder()
+                    .nickname(mappingStudyGuest.getUser().getNickname())
+                    .status(mappingStudyGuest.getStatus())
+                    .build());
+        }
 
 
-
-        System.out.println(StudyDto.ReadStudyDetail.builder()
-                .title(study.getTitle())
-                .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
-                .title(study.getTitle())
-                .needPeople(study.getNeedPeople())
-                .interestName(interestNameList)
-                .periodStart(study.getPeriodStart())
-                .periodEnd(study.getPeriodEnd())
-                .goal(study.getGoal())
-                .need(study.getNeed())
-                .details(study.getDetails())
-                .build());
-
-//        ReadStudyDetailDto.builder()
-//                .readStudyDetail(StudyDto.ReadStudyDetail.builder()
-//                        .title(study.getTitle())
-//                        .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
-//                        .title(study.getTitle())
-//                        .needPeople(study.getNeedPeople())
-//                        .interestName(interestNameList)
-//                        .periodStart(study.getPeriodStart())
-//                        .periodEnd(study.getPeriodEnd())
-//                        .goal(study.getGoal())
-//                        .need(study.getNeed())
-//                        .details(study.getDetails())
-//                        .build())
-//                .readStudyDetailMembers()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        System.out.println(studyRepository.findByStudyID(studyID));
-//        System.out.println(studyRepository.findByStudyID(studyID).getStudyID());
-//        System.out.println(studyRepository.findByStudyID(studyID).getStudyInterests());
-//        for (MappingStudyInterest mappingStudyInterestList : studyRepository.findByStudyID(studyID).getStudyInterests()) {
-//            System.out.println(mappingStudyInterestList.getInterest().getInterestName());
-//        }
-
+        return ReadStudyDetailDto.builder()
+                .readStudyDetail(StudyDto.ReadStudyDetail.builder()
+                        .title(study.getTitle())
+                        .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
+                        .title(study.getTitle())
+                        .approvePeople(approvePeople)
+                        .needPeople(study.getNeedPeople())
+                        .interestName(interestNameList)
+                        .periodStart(study.getPeriodStart())
+                        .periodEnd(study.getPeriodEnd())
+                        .goal(study.getGoal())
+                        .need(study.getNeed())
+                        .onoffline(study.getOnoffline())
+                        .details(study.getDetails())
+                        .build())
+                .readStudyDetailMembers(readStudyDetailMembers)
+                .build();
 
     }
 
@@ -204,7 +186,6 @@ public class StudyService {
                         .studyID(studyID)
                         .status("대기")
                         .build());
-
         mappingStudyGuestRepository.save(mappingStudyGuest);
     }
 
