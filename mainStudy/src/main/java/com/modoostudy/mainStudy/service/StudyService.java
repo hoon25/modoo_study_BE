@@ -80,7 +80,7 @@ public class StudyService {
         */
         Study createStudyEntity = StudyMapper.INSTANCE.toEntity(
                 StudyDto.builder()
-                        .hostID(getUserFromJWT().getUserID())
+                        .user(userRepository.findByUserID(getUserFromJWT().getUserID()))
                         .title(createStudyDto.getRegistStudy().getTitle())
                         .periodStart(createStudyDto.getRegistStudy().getPeriodStart())
                         .periodEnd(createStudyDto.getRegistStudy().getPeriodEnd())
@@ -112,8 +112,18 @@ public class StudyService {
                             .study(createStudyEntity)
                             .interest(interest)
                             .build());
-
         }
+
+        /*
+        mappingStudyGuestTB에 hostID를 승인으로 입력
+         */
+        MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
+                StudyGuestDto.builder()
+                        .user(userRepository.findByUserID(getUserFromJWT().getUserID()))
+                        .study(createStudyEntity)
+                        .status("승인")
+                        .build());
+        mappingStudyGuestRepository.save(mappingStudyGuest);
     }
 
     /**
@@ -135,6 +145,7 @@ public class StudyService {
 
 
         // 스터디 승인받은 사람 수
+
         Long approvePeople = study.getStudyGuests().stream()
                 .map(MappingStudyGuest::getStatus)
                 .filter(s -> s.contentEquals("승인"))
@@ -142,15 +153,19 @@ public class StudyService {
 
 
         // 스터디 멤버 현황 (승인/대기 받은사람 정보)
-        List<MappingStudyGuest> mappingStudyGuestList = mappingStudyGuestRepository.findByStatusOrStatusAndStudy("승인","대기", study);
+        List<MappingStudyGuest> mappingStudyGuestList = mappingStudyGuestRepository.findByStudy(study);
+
 
         List<StudyDto.ReadStudyDetailMember> readStudyDetailMembers = new ArrayList<>();
 
         for (MappingStudyGuest mappingStudyGuest : mappingStudyGuestList) {
-            readStudyDetailMembers.add(StudyDto.ReadStudyDetailMember.builder()
-                    .nickname(mappingStudyGuest.getUser().getNickname())
-                    .status(mappingStudyGuest.getStatus())
-                    .build());
+            if(mappingStudyGuest.getStatus().contentEquals("승인") || mappingStudyGuest.getStatus().contentEquals("대기")){
+                readStudyDetailMembers.add(StudyDto.ReadStudyDetailMember.builder()
+                        .nickname(mappingStudyGuest.getUser().getNickname())
+                        .status(mappingStudyGuest.getStatus())
+                        .build());
+            }
+
         }
 
 
@@ -175,15 +190,18 @@ public class StudyService {
     }
 
     /**
-     * 스터디 신청하기
+     * 스터디 참여 신청하기
      */
     public void applyStudyMember(Long studyID) {
+        /*
+        mappingStudyGuestTB 입력
+         */
         MappingStudyGuest mappingStudyGuest = StudyGuestMapper.INSTANCE.toEntity(
                 StudyGuestDto.builder()
-                        .guestID(getUserFromJWT().getUserID())
-                        .studyID(studyID)
-                        .status("대기")
-                        .build());
+                .user(userRepository.findByUserID(getUserFromJWT().getUserID()))
+                .study(studyRepository.findByStudyID(studyID))
+                .status("대기")
+                .build());
         mappingStudyGuestRepository.save(mappingStudyGuest);
     }
 

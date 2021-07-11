@@ -60,9 +60,10 @@ public class Study{
 
 
     @Builder
-    public Study(Long studyID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details) {
+
+    public Study(Long studyID, User user, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details, List<MappingStudyInterest> studyInterests, List<MappingStudyGuest> studyGuests) {
         this.studyID = studyID;
-//        this.hostID = hostID;
+        this.user = user;
         this.title = title;
         this.periodStart = periodStart;
         this.periodEnd = periodEnd;
@@ -71,5 +72,7 @@ public class Study{
         this.onoffline = onoffline;
         this.needPeople = needPeople;
         this.details = details;
+        this.studyInterests = studyInterests;
+        this.studyGuests = studyGuests;
     }
 }

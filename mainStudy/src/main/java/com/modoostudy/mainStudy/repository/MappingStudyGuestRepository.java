@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MappingStudyGuestRepository extends JpaRepository<MappingStudyGuest, Long> {
 
-    List<MappingStudyGuest> findByStatusOrStatusAndStudy(String status,String status2, Study study);
+    List<MappingStudyGuest> findByStudy(Study study);
 
 
 }

@@ -1,5 +1,6 @@
 package com.modoostudy.mainStudy.dto;
 
+import com.modoostudy.mainStudy.entity.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -14,7 +15,8 @@ import java.util.List;
 public class StudyDto {
 
 //    private Long studyID;
-    private Long hostID;
+//    private Long hostID;
+    private User user;
     private String title;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate periodStart;
