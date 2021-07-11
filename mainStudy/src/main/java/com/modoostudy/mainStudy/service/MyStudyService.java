@@ -36,6 +36,17 @@ public class MyStudyService {
                 .build();
     }
 
+    /**
+     * Mystudy 메인페이지 서비스
+     */
+
+    public void getMystudyPage(){
+
+
+    }
+
+
+
 
 
 

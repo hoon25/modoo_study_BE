@@ -1,6 +1,12 @@
 package com.modoostudy.mainStudy.dto.function.mystudy;
 
-public class MainMystudy {
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class MainMyStudy {
+
 
 
 }

@@ -10,6 +10,7 @@ public class ResponseMessage {
     public static final String READ_STUDYDETAIL = "스터디 상세정보 조회 성공";
 
     // MyStudy
+    public static final String READ_MYSTUDY = "마이 스터디페이지 조회 성공";
 
 //    public static final String LOGIN_SUCCESS = "로그인 성공";
 //    public static final String LOGIN_FAIL = "로그인 실패";
