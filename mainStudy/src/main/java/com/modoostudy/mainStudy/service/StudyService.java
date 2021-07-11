@@ -3,7 +3,7 @@ package com.modoostudy.mainStudy.service;
 import com.modoostudy.mainStudy.dto.StudyDto;
 import com.modoostudy.mainStudy.dto.StudyGuestDto;
 import com.modoostudy.mainStudy.dto.StudyInterestDto;
-import com.modoostudy.mainStudy.dto.function.*;
+import com.modoostudy.mainStudy.dto.function.study.*;
 import com.modoostudy.mainStudy.entity.*;
 import com.modoostudy.mainStudy.mapper.InterestMapper;
 import com.modoostudy.mainStudy.mapper.RegionMapper;
@@ -30,7 +30,6 @@ public class StudyService {
     private final StudyRepository studyRepository;
     private final MappingStudyInterestRepository mappingStudyInterestRepository;
     private final MappingStudyGuestRepository mappingStudyGuestRepository;
-    private final MappingUserInterestRepository mappingUserInterestRepository;
 
 
 //    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("name");
@@ -91,6 +90,7 @@ public class StudyService {
                         .onoffline(createStudyDto.getRegistStudy().getOnoffline())
                         .needPeople(createStudyDto.getRegistStudy().getNeedPeople())
                         .details(createStudyDto.getRegistStudy().getDetails())
+                        .studyStatus("진행중")
                         .build());
 
         studyRepository.save(createStudyEntity);

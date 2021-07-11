@@ -1,10 +1,10 @@
 package com.modoostudy.mainStudy.controller;
 
 
-import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
-import com.modoostudy.mainStudy.dto.function.ReadStudyDetailDto;
-import com.modoostudy.mainStudy.dto.function.ReadStudyListDto;
-import com.modoostudy.mainStudy.dto.function.StudyFormDto;
+import com.modoostudy.mainStudy.dto.function.study.CreateStudyDto;
+import com.modoostudy.mainStudy.dto.function.study.ReadStudyDetailDto;
+import com.modoostudy.mainStudy.dto.function.study.ReadStudyListDto;
+import com.modoostudy.mainStudy.dto.function.study.StudyFormDto;
 import com.modoostudy.mainStudy.responseCode.success.DefaultRes;
 import com.modoostudy.mainStudy.responseCode.success.ResponseMessage;
 import com.modoostudy.mainStudy.responseCode.success.StatusCode;

@@ -50,6 +50,9 @@ public class Study{
     @Column(nullable = false)
     private String details;
 
+    @Column(nullable = false)
+    private String studyStatus;
+
 
     @OneToMany(mappedBy = "study")
     private List<MappingStudyInterest> studyInterests = new ArrayList<MappingStudyInterest>();

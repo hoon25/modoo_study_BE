@@ -27,6 +27,7 @@ public class StudyDto {
     private String onoffline;
     private Long needPeople;
     private String details;
+    private String studyStatus;
 
     @Getter
     @NoArgsConstructor
@@ -41,6 +42,7 @@ public class StudyDto {
         private String onoffline;
         private Long needPeople;
         private String details;
+        private String studyStatus;
     }
 
     @Data
