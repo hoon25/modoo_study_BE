@@ -3,12 +3,14 @@ package com.modoostudy.user.service;
 import com.modoostudy.user.domain.MappingEmblem;
 import com.modoostudy.user.domain.MappingUserInterest;
 import com.modoostudy.user.domain.User;
+import com.modoostudy.user.dto.ImageDto;
 import com.modoostudy.user.dto.UserDto;
 import com.modoostudy.user.mapper.UserMapper;
 import com.modoostudy.user.repository.CertificationRepository;
 import com.modoostudy.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,5 +75,18 @@ public class UserService {
         stream.forEach(x -> interest.add(x.getInterests().getInterestName()));
 
         return interest;
+    }
+
+    public ImageDto getUserImage(Long userID) {
+        User user = userRepository.findByUserID(userID);
+        ImageDto userImage = ImageDto.builder().userImage(user.getUserImage()).build();
+
+        return userImage;
+    }
+
+    @Transactional
+    public void updateImage(Long userID, String imageUrl) {
+        User user = userRepository.findByUserID(userID);
+        user.setUserImage(imageUrl);
     }
 }

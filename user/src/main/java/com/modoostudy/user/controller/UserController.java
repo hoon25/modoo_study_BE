@@ -1,5 +1,6 @@
 package com.modoostudy.user.controller;
 
+import com.modoostudy.user.dto.ImageDto;
 import com.modoostudy.user.dto.UserDto;
 import com.modoostudy.user.service.EmblemService;
 import com.modoostudy.user.service.UserService;
@@ -39,6 +40,16 @@ public class UserController {
     @GetMapping("{id}/emblemAll")
     public List getAllEmblem(@PathVariable("id") Long id) {
         return emblemService.getAllEmblem(id);
+    }
+
+    @GetMapping("{id}/image")
+    public ImageDto getImage(@PathVariable("id") Long id) {
+        return userService.getUserImage(id);
+    }
+
+    @PostMapping("{id}/imageSet")
+    public void updateImage(@PathVariable("id") Long id, @RequestBody String imageUrl) {
+        userService.updateImage(id, imageUrl);
     }
 
 //    @GetMapping("all")
