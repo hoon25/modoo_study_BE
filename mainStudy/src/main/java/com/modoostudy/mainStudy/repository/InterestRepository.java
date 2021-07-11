@@ -14,6 +14,8 @@ public interface InterestRepository extends JpaRepository<Interest,Integer> {
     @Override
     List<Interest> findAll(Sort sort);
 
+    Interest findByInterestID(Long interestID);
+
 
 
 }

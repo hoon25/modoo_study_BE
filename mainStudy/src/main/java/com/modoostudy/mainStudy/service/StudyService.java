@@ -30,6 +30,7 @@ public class StudyService {
     private final StudyRepository studyRepository;
     private final MappingStudyInterestRepository mappingStudyInterestRepository;
     private final MappingStudyGuestRepository mappingStudyGuestRepository;
+    private final MappingUserInterestRepository mappingUserInterestRepository;
 
 
 //    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("name");
@@ -140,6 +141,8 @@ public class StudyService {
         if (authentication.getPrincipal().toString().contentEquals("anonymousUser"))
         {
             System.out.println("비회원입니다.");
+
+
             return ReadStudyListDto.builder()
 //                .readStudyList()
                     .build();
@@ -149,9 +152,40 @@ public class StudyService {
         /*
         로그인 시
          */
-
-
         else {
+            List<MappingUserInterest> mappingUserInterestsList = userRepository.findByUserID(getUserFromJWT().getUserID()).getUserInterests();
+
+
+
+
+            for(MappingUserInterest userInterest:mappingUserInterestsList){
+
+//                mappingStudyInterestRepository.findByInterest(interestRepository.findByInterestID(userInterest.getInterest().getInterestID()));
+
+
+//                StudyDto.ReadStudyList.builder()
+//                        .category(userInterest.getInterest().getInterestName())
+//                        .title()
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             return ReadStudyListDto.builder()
                     .loginUserDto(getUserFromJWT())

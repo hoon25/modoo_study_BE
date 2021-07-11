@@ -42,6 +42,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<MappingStudyGuest> studyGuests;
 
+    @OneToMany(mappedBy = "user")
+    List<MappingUserInterest> userInterests;
+
+
     @Builder
     public User(Long userID, String password, String nickname, String region, String GEmail, String userImage, int authorities) {
         this.userID = userID;
