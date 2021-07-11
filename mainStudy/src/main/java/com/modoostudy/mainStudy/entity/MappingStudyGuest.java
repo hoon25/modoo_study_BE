@@ -32,7 +32,7 @@ public class MappingStudyGuest {
     private Study study;
 
     @ManyToOne
-    @JoinColumn(name="userID")
+    @JoinColumn(name="guestID", referencedColumnName = "userID")
     private User user;
 
 
