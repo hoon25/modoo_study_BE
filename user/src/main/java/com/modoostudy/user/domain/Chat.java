@@ -7,9 +7,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="chatTB")
 @Getter
 @Setter
-public class chatTB {
+public class Chat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

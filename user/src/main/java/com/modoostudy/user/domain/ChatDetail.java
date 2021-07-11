@@ -7,17 +7,14 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="chatDetailsTB")
 @Getter
 @Setter
-public class chatDetailsTB {
+public class ChatDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-
-    @ManyToOne
-    @JoinColumn(name="speaker")
-    private userTB userTB;
 
     @Column
     private String chatContents;
@@ -25,8 +22,19 @@ public class chatDetailsTB {
     @Column
     private LocalDateTime chatTime;
 
-    @ManyToOne
-    @JoinColumn
-    private chatTB chatTB;
+    @Column
+    private String speaker;
+
+    @Column
+    private Long chatID;
+
+//    @ManyToOne
+//    @JoinColumn
+//    private Chat Chat;
+
+//    @ManyToOne
+//    @JoinColumn(name="speaker")
+//    private userTB userTB;
+
 
 }

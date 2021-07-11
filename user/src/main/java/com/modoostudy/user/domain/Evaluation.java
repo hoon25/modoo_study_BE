@@ -6,21 +6,25 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Table(name="evaluationTB")
 @Getter
 @Setter
-public class notifiTB {
+public class Evaluation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
     @Column
-    private String noti;
+    private int score;
 
     @Column
-    private Long read_check;
+    private String comment;
 
-    @ManyToOne
-    @JoinColumn
-    private userTB userTB;
+    @Column
+    private Long userID;
+
+//    @ManyToOne
+//    @JoinColumn
+//    private userTB userTB;
 }

@@ -6,30 +6,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="interestTB")
 @Getter
 @Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
-public class userTB {
+public class Interests {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Long interestID;
 
-    @Column
-    private String nickname;
+    @Column(nullable = false)
+    private String interestName;
 
-    @Column
-    private String username;
+    @Column(nullable = false)
+    private String interestClassification;
 
-    @Column
-    private String GEmail;
+//    @OneToMany(mappedBy = "Interests")
+//    private List<MappingUserInterest> userInterests = new ArrayList<>();
 
-    @Column
-    private String userImage;
-
-    @OneToMany(mappedBy = "userTB")
-    private List<certifiTB> certification;
 }
