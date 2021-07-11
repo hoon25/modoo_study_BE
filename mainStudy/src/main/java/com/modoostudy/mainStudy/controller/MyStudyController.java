@@ -1,5 +1,6 @@
 package com.modoostudy.mainStudy.controller;
 
+import com.modoostudy.mainStudy.dto.function.mystudy.ReadMainMyStudy;
 import com.modoostudy.mainStudy.responseCode.success.DefaultRes;
 import com.modoostudy.mainStudy.responseCode.success.ResponseMessage;
 import com.modoostudy.mainStudy.responseCode.success.StatusCode;
@@ -20,10 +21,10 @@ public class MyStudyController {
     @GetMapping("/mystudy")
     public ResponseEntity getMystudyPage(){
 
-        myStudyService.getMystudyPage();
+        ReadMainMyStudy readMainMyStudy = myStudyService.getMystudyPage();
 
         return new ResponseEntity(DefaultRes
-                .res(StatusCode.OK, ResponseMessage.READ_MYSTUDY), HttpStatus.OK);
+                .res(StatusCode.OK, ResponseMessage.READ_MYSTUDY,readMainMyStudy), HttpStatus.OK);
     }
 
 

@@ -32,10 +32,6 @@ public class StudyService {
     private final MappingStudyGuestRepository mappingStudyGuestRepository;
 
 
-//    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("name");
-//    private final EntityManager em = emf.createEntityManager();
-
-
     /**
      * JWT 토큰으로부터 로그인 유저 정보 가져오기
      */

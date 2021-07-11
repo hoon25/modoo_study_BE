@@ -84,6 +84,13 @@ public class StudyDto {
         private List<String> interestName;
     }
 
+    @Data
+    @Builder
+    public static class MainMyStudy {
+        private String title;
+        private Boolean hostBoolean;
+    }
+
 
 
 
