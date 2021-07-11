@@ -45,6 +45,7 @@ public class StudyDto {
     @Builder
     public static class ReadStudyDetail {
         private String title;
+        private String hostNickName;
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         private LocalDate periodStart;
         @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -56,6 +57,13 @@ public class StudyDto {
         private Long needPeople;
         private String details;
         private List<String> interestName;
+    }
+
+    @Data
+    @Builder
+    public static class ReadStudyDetailMember {
+        private String nickname;
+        private String status;
     }
 
 

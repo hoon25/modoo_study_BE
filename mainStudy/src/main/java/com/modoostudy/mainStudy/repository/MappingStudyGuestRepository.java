@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MappingStudyGuestRepository extends JpaRepository<MappingStudyGuest, Long> {
 
+
+
 }

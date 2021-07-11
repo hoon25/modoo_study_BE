@@ -7,7 +7,10 @@ import com.modoostudy.mainStudy.dto.function.CreateStudyDto;
 import com.modoostudy.mainStudy.dto.function.LoginUserDto;
 import com.modoostudy.mainStudy.dto.function.StudyFormDto;
 import com.modoostudy.mainStudy.entity.*;
-import com.modoostudy.mainStudy.mapper.*;
+import com.modoostudy.mainStudy.mapper.InterestMapper;
+import com.modoostudy.mainStudy.mapper.RegionMapper;
+import com.modoostudy.mainStudy.mapper.StudyGuestMapper;
+import com.modoostudy.mainStudy.mapper.StudyMapper;
 import com.modoostudy.mainStudy.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -15,7 +18,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @Service
@@ -27,6 +32,7 @@ public class StudyService {
     private final StudyRepository studyRepository;
     private final MappingStudyInterestRepository mappingStudyInterestRepository;
     private final MappingStudyGuestRepository mappingStudyGuestRepository;
+
 
 //    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("name");
 //    private final EntityManager em = emf.createEntityManager();
@@ -119,7 +125,59 @@ public class StudyService {
     public void readStudyDetail(Long studyID) {
 
         Study study =  studyRepository.findByStudyID(studyID);
-        System.out.println(study);
+
+
+        // List interestName
+        List<String> interestNameList = new ArrayList<>();
+        Stream<MappingStudyInterest> stream = study.getStudyInterests().stream();
+        stream.forEach(c-> interestNameList.add(c.getInterest().getInterestName()));
+
+        System.out.println(interestNameList.get(0));
+        System.out.println(interestNameList.get(1));
+
+        // approvePeopleCount
+
+
+        // studyGuestInfo
+
+
+
+        System.out.println(StudyDto.ReadStudyDetail.builder()
+                .title(study.getTitle())
+                .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
+                .title(study.getTitle())
+                .needPeople(study.getNeedPeople())
+                .interestName(interestNameList)
+                .periodStart(study.getPeriodStart())
+                .periodEnd(study.getPeriodEnd())
+                .goal(study.getGoal())
+                .need(study.getNeed())
+                .details(study.getDetails())
+                .build());
+
+//        ReadStudyDetailDto.builder()
+//                .readStudyDetail(StudyDto.ReadStudyDetail.builder()
+//                        .title(study.getTitle())
+//                        .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
+//                        .title(study.getTitle())
+//                        .needPeople(study.getNeedPeople())
+//                        .interestName(interestNameList)
+//                        .periodStart(study.getPeriodStart())
+//                        .periodEnd(study.getPeriodEnd())
+//                        .goal(study.getGoal())
+//                        .need(study.getNeed())
+//                        .details(study.getDetails())
+//                        .build())
+//                .readStudyDetailMembers()
+
+
+
+
+
+
+
+
+
 
 
 

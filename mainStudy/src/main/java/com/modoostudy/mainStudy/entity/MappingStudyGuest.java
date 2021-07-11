@@ -26,4 +26,9 @@ public class MappingStudyGuest {
 
     @Column(nullable = false)
     private String status;
+
+//    @ManyToOne
+//    @JoinColumn(name="guestID")
+//    private Study study;
+
 }

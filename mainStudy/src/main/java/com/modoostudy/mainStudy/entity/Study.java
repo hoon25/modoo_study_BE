@@ -52,6 +52,9 @@ public class Study{
     @OneToMany(mappedBy = "study")
     private List<MappingStudyInterest> studyInterests = new ArrayList<>();
 
+//    @OneToMany(mappedBy = "study")
+//    private List<MappingStudyGuest> studyGuests = new ArrayList<>();
+
 
     @Builder
     public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details) {
