@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,23 +20,10 @@ public class communityController {
 //    public String community(){
 //        return "community.html";
 //    }
-
     private CommunityService communityService;
 
     @GetMapping("")
     public communityTB community(@RequestParam(value = "communityID") Long communityID) {
         return communityService.findById(communityID);
     }
-
-
-//    @RequestMapping(value = "/topic")
-//    public String topic(){
-//        return "topic.html";
-//    }
-//
-//    @RequestMapping(value = "/communityform")
-//    public String communityform(){
-//        return "communityform.html";
-//    }
-
 }

@@ -1,5 +1,7 @@
 package com.modoostudy.community.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class replyTB {
     private userTB userTB;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name="communityID")
     private communityTB communityTB;
 

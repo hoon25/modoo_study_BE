@@ -1,5 +1,6 @@
 package com.modoostudy.community.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class communityTB {
 
     @ManyToOne
     @JoinColumn(name="writerID")
+    @JsonManagedReference
     private userTB userTB;
 
     @Column
