@@ -21,8 +21,11 @@ public class Study{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studyID;
 
-    @Column(nullable = false)
-    private Long hostID;
+//    @Column(nullable = false)
+//    private Long hostID;
+    @OneToOne
+    @JoinColumn(name="hostID", referencedColumnName = "userID")
+    User user;
 
     @Column(nullable = false)
     private String title;
@@ -57,9 +60,9 @@ public class Study{
 
 
     @Builder
-    public Study(Long studyID, Long hostID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details) {
+    public Study(Long studyID, String title, LocalDate periodStart, LocalDate periodEnd, String goal, String need, String onoffline, Long needPeople, String details) {
         this.studyID = studyID;
-        this.hostID = hostID;
+//        this.hostID = hostID;
         this.title = title;
         this.periodStart = periodStart;
         this.periodEnd = periodEnd;

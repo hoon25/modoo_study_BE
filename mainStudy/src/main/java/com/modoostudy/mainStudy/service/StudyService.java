@@ -133,8 +133,6 @@ public class StudyService {
                 .map(Interest::getInterestName)
                 .collect(Collectors.toList());
 
-        System.out.println(interestNameList.get(0));
-        System.out.println(interestNameList.get(1));
 
         // 스터디 승인받은 사람 수
         Long approvePeople = study.getStudyGuests().stream()
@@ -159,7 +157,7 @@ public class StudyService {
         return ReadStudyDetailDto.builder()
                 .readStudyDetail(StudyDto.ReadStudyDetail.builder()
                         .title(study.getTitle())
-                        .hostNickName(userRepository.findByUserID(study.getHostID()).getNickname())
+                        .hostNickName(study.getUser().getNickname())
                         .title(study.getTitle())
                         .approvePeople(approvePeople)
                         .needPeople(study.getNeedPeople())
@@ -201,7 +199,7 @@ public class StudyService {
 //        createStudyEntity.setStudyID(10L);  // studyID는 auto_increament
         createStudyEntity.setDetails("디테일2");
         createStudyEntity.setGoal("목표");
-        createStudyEntity.setHostID(1000L);
+//        createStudyEntity.setHostID(1000L);
         createStudyEntity.setNeed("원하는거");
         createStudyEntity.setOnoffline("온라인");
         createStudyEntity.setPeriodStart(LocalDate.now());
