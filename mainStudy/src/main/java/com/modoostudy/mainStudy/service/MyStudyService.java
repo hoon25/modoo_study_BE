@@ -87,8 +87,6 @@ public class MyStudyService {
                 .loginUserDto(loginUserDto)
                 .progressStudyList(progressStudy)
                 .endStudyList(endStudy).build();
-
-
     }
 
 

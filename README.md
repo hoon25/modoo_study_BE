@@ -26,7 +26,13 @@ https://docs.google.com/spreadsheets/d/15ctI-zyCb5iYiDdUhi3Qm7I0Q3hfm7EwHiw3yH2_
 
 https://app.diagrams.net/#G1VAYe_sMlg3f5Qwm_8sXNObFvos4lJOHb
 
+#### Backend 구성도
 
+https://www.notion.so/changmean/Backend-20613dc67dc34edfbda47890e5ba883d
+
+## Architecture
+
+![image-20211108230100276](README.assets/image-20211108230100276.png)
 
 ## Branch
 
